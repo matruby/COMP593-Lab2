@@ -15,14 +15,20 @@ def main():
     # Add a new movie to the dictionary
     personal_dict['movies'].append({'title':'us', 'genre':'horror'})
 
-    # Get the name string and store it to be used later
+    # Print name and student ID
     name_id_str = view_name_id(personal_dict)
+
     # Print out the list of pizza toppings
     bullet_list(personal_dict)
+
     # Add new toppings, sort the current ones alphabetically, convert to lowercase
     add_topping(personal_dict, ('Green Pepper', 'Onions'))
+
     # Print ou the list of pizza toppings with the changes made
     bullet_list(personal_dict)
+
+    # Print out what movie genres I like 
+    genre_csl(personal_dict)
 
     return 
 
@@ -65,7 +71,25 @@ def bullet_list(comp_ds):
         print(f'- {topping}')
     print('\n')
     
+
+def genre_csl(comp_ds):
+    """Prints comma seperated list of movie genres"""
+    # List to hold all the genre values
+    cs_genre_lst = []
     
+    # Add all the genre's to the list
+    for movie in comp_ds['movies']:
+        cs_genre_lst.append(movie['genre'])
+
+    # Pop the last genre from the list
+    last_entry = cs_genre_lst.pop(-1)
+    
+    # Comma seperated entries 
+    cs_str = ', '.join(cs_genre_lst) + f', and {last_entry}'
+
+    print(f'I like to watch {cs_str} movies.')
+
+
 
 if __name__ == '__main__': 
     main()
