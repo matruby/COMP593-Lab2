@@ -17,8 +17,12 @@ def main():
 
     # Get the name string and store it to be used later
     name_id_str = view_name_id(personal_dict)
+    # Print out the list of pizza toppings
+    bullet_list(personal_dict)
     # Add new toppings, sort the current ones alphabetically, convert to lowercase
     add_topping(personal_dict, ('Green Pepper', 'Onions'))
+    # Print ou the list of pizza toppings with the changes made
+    bullet_list(personal_dict)
 
     return 
 
@@ -32,10 +36,10 @@ def view_name_id(comp_ds):
     first_name = full_name.split()[0]
 
     # Strings to be returned
-    name_str = f'My name is {full_name}, but you can call me Sir {first_name}\n' + \
-    f'My student ID is {student_id}'
+    name_str = f'\nMy name is {full_name}, but you can call me Sir {first_name}\n' + \
+    f'My student ID is {student_id}\n'
 
-    return name_str 
+    print(name_str)
 
 def add_topping(comp_ds, toppings):
     """Append pizza toppings to the end of the list"""
@@ -54,8 +58,14 @@ def add_topping(comp_ds, toppings):
     
     return comp_ds
 
-
-
+def bullet_list(comp_ds):
+    """Prints pizza toppings in a bullet list"""
+    # Loop over the list and print them out one by one
+    for topping in comp_ds['pizza_toppings']:
+        print(f'- {topping}')
+    print('\n')
+    
+    
 
 if __name__ == '__main__': 
     main()
