@@ -15,7 +15,11 @@ def main():
     # Add a new movie to the dictionary
     personal_dict['movies'].append({'title':'us', 'genre':'horror'})
 
+    # Get the name string and store it to be used later
     name_id_str = view_name_id(personal_dict)
+    # Add new toppings, sort the current ones alphabetically, convert to lowercase
+    add_topping(personal_dict, ('Green Pepper', 'Onions'))
+
     return 
 
 def view_name_id(comp_ds):
@@ -33,6 +37,27 @@ def view_name_id(comp_ds):
 
     return name_str 
 
+def add_topping(comp_ds, toppings):
+    """Append pizza toppings to the end of the list"""
+    # Add toppings to the pizza_toppings entry
+    for topping in toppings:
+        comp_ds['pizza_toppings'].append(topping)
+
+    # Sort the pizza toppings alphabetically
+    comp_ds['pizza_toppings'].sort()
+
+    # Convert all pizza toppings to lowercase
+    topping_len = len(comp_ds['pizza_toppings'])
+    for count in range(topping_len):
+        topping = comp_ds['pizza_toppings'][count]
+        comp_ds['pizza_toppings'][count] = topping.lower()
+    
+    return comp_ds
+
+
+
+
 if __name__ == '__main__': 
     main()
+    
 
