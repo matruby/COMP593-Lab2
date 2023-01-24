@@ -30,6 +30,9 @@ def main():
     # Print out what movie genres I like 
     genre_csl(personal_dict)
 
+    # Print out the names of the movies I like
+    title_csl(personal_dict)
+
     return 
 
 def view_name_id(comp_ds):
@@ -42,7 +45,7 @@ def view_name_id(comp_ds):
     first_name = full_name.split()[0]
 
     # Strings to be returned
-    name_str = f'\nMy name is {full_name}, but you can call me Sir {first_name}\n' + \
+    name_str = f'My name is {full_name}, but you can call me Sir {first_name}\n' + \
     f'My student ID is {student_id}\n'
 
     print(name_str)
@@ -66,6 +69,9 @@ def add_topping(comp_ds, toppings):
 
 def bullet_list(comp_ds):
     """Prints pizza toppings in a bullet list"""
+    # Title string
+    print('My favourite pizza toppings are:')
+
     # Loop over the list and print them out one by one
     for topping in comp_ds['pizza_toppings']:
         print(f'- {topping}')
@@ -88,6 +94,26 @@ def genre_csl(comp_ds):
     cs_str = ', '.join(cs_genre_lst) + f', and {last_entry}'
 
     print(f'I like to watch {cs_str} movies.')
+
+def title_csl(comp_ds):
+    """Prints comma seperated list of movie titles"""
+    # List to hold all the genre values
+    cs_title_lst = []
+    
+    # Add all the title's to the list
+    for movie in comp_ds['movies']:
+        cs_title_lst.append(movie['title'])
+
+    # Convert the list to title case
+    cs_title_lst = [mov_name.title() for mov_name in cs_title_lst]
+
+    # Pop the last title from the list
+    last_entry = cs_title_lst.pop(-1)
+    
+    # Comma seperated entries 
+    cs_str = ', '.join(cs_title_lst) + f', and {last_entry}'
+
+    print(f'Some of my favourite movies are {cs_str}!')
 
 
 
