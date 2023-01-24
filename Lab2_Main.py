@@ -13,7 +13,11 @@ def main():
                 ]
             }
     # Step 3 Add Another Movie to the Data Structure 
-    return
+    personal_dict['movies'].append({'title':'us', 'genre':'horror'})
+    return 
+
+
 if __name__ == '__main__': 
     main()
+    
 
