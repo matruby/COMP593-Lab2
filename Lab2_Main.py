@@ -55,12 +55,9 @@ def print_pizza_toppings(comp_ds):
     
 def print_movie_genres(comp_ds):
     """Prints comma-seperated list of movie genres"""
-    cs_genre_lst = [] # List for genre values
+    # Add genre's to a list
+    cs_genre_lst = [movie['genre'] for movie in comp_ds['movies']]
     
-    # Add genre's to list
-    for movie in comp_ds['movies']:
-        cs_genre_lst.append(movie['genre'])
-
     last_entry = cs_genre_lst.pop(-1) # Pop the last genre from the list 
     cs_str = ', '.join(cs_genre_lst) + f', and {last_entry}'# Output str
     
@@ -79,4 +76,3 @@ def print_movie_titles(movie_list):
 
 if __name__ == '__main__': 
     main()
-    
