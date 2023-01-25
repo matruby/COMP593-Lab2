@@ -22,18 +22,6 @@ Using a dictionary as the base object, initialize a data structure that contains
 the following information. This dictionary object must be local to the main() 
 function. 
 
-KEY             DATA TYPE   VALUES
-full_name        str        Your full name (i.e., at least 2 names seperated by a space)
-student_id       str        Your student ID
-pizza_toppings   list       Your 3 favourite pizza toppings (use only uppercase letters)
-movies 		 list	    This list must contain 2 dictionaries that hold inforation
-			    about your 2 favourite movies (use only lowercase lettters)
-			    
-			    Each dictionary must have the following keys:
-		 	    . title 
-			    . genre
-
-
 Step 3 - Add Another Movie to the Data Structure
 
 Within the main() function, after the data structure is initialized, add one more 
