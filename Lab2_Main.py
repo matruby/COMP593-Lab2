@@ -2,7 +2,7 @@
 def main():
     """Some facts about me in dictionary"""
     # Create the dictionary of my personal information
-    personal_dict = {
+    about_me = {
             'full name': 'Matthew Rubie',
             'student_id': 10197289,
             'pizza_toppings': ['PEPPERONI', 'MUSHROOMS', 'HAM'],
@@ -12,112 +12,71 @@ def main():
                 ]
             }
 
-    # Add a new movie to the dictionary
-    personal_dict['movies'].append({'title':'us', 'genre':'horror'})
+    about_me['movies'].append({'title':'us', 'genre':'horror'})# Step 3
+    print(print_student_name_and_id(about_me))# Step 4
+    print_pizza_toppings(about_me) # Step 6 pt 1
+    add_pizza_toppings(about_me, ('Green Pepper', 'Onions'))# Step 5
+    print_pizza_toppings(about_me) #Step 6 pt 2
+    print(print_movie_genres(about_me)) # Step 7
+    print(print_movie_titles(about_me['movies'])) # Step 8
 
-    # Print name and student ID
-    name_id_str = view_name_id(personal_dict)
+    return None
 
-    # Print out the list of pizza toppings
-    bullet_list(personal_dict)
+def print_student_name_and_id(comp_ds):
+    """Prints out student name and ID"""
+    full_name = comp_ds['full name'] # Get full name from dict
+    student_id = comp_ds['student_id']# Get Student ID from dict
 
-    # Add new toppings, sort the current ones alphabetically, convert to lowercase
-    add_topping(personal_dict, ('Green Pepper', 'Onions'))
-
-    # Print ou the list of pizza toppings with the changes made
-    bullet_list(personal_dict)
-
-    # Print out what movie genres I like 
-    genre_csl(personal_dict)
-
-    # Print out the names of the movies I like
-    title_csl(personal_dict)
-
-    return 
-
-def view_name_id(comp_ds):
-    """Prints out name and student ID"""
-    # Get name and student ID from dictionary
-    full_name = comp_ds['full name'] 
-    student_id = comp_ds['student_id']
-
-    # Use split to get the first name
-    first_name = full_name.split()[0]
-
-    # Strings to be returned
+    first_name = full_name.split()[0] # Get just the first name
     name_str = f'My name is {full_name}, but you can call me Sir {first_name}\n' + \
     f'My student ID is {student_id}\n'
 
-    print(name_str)
+    return name_str
 
-def add_topping(comp_ds, toppings):
-    """Append pizza toppings to the end of the list"""
+def add_pizza_toppings(comp_ds, toppings):
+    """Function that adds pizza toppings to data structure"""
     # Add toppings to the pizza_toppings entry
     for topping in toppings:
         comp_ds['pizza_toppings'].append(topping)
-
-    # Sort the pizza toppings alphabetically
-    comp_ds['pizza_toppings'].sort()
-
+ 
+    comp_ds['pizza_toppings'].sort() # Sort toppings alphabetically
     # Convert all pizza toppings to lowercase
-    topping_len = len(comp_ds['pizza_toppings'])
-    for count in range(topping_len):
-        topping = comp_ds['pizza_toppings'][count]
-        comp_ds['pizza_toppings'][count] = topping.lower()
-    
+    comp_ds['pizza_toppings'] = [topping.lower() for topping in comp_ds['pizza_toppings']]
+     
     return comp_ds
 
-def bullet_list(comp_ds):
-    """Prints pizza toppings in a bullet list"""
-    # Title string
-    print('My favourite pizza toppings are:')
-
+def print_pizza_toppings(comp_ds):
+    """Prints bullet list of pizza toppings"""
+    print('My favourite pizza toppings are:') # Title string
     # Loop over the list and print them out one by one
     for topping in comp_ds['pizza_toppings']:
         print(f'- {topping}')
     print('\n')
     
-
-def genre_csl(comp_ds):
-    """Prints comma seperated list of movie genres"""
-    # List to hold all the genre values
-    cs_genre_lst = []
+def print_movie_genres(comp_ds):
+    """Prints comma-seperated list of movie genres"""
+    cs_genre_lst = [] # List for genre values
     
-    # Add all the genre's to the list
+    # Add genre's to list
     for movie in comp_ds['movies']:
         cs_genre_lst.append(movie['genre'])
 
-    # Pop the last genre from the list
-    last_entry = cs_genre_lst.pop(-1)
+    last_entry = cs_genre_lst.pop(-1) # Pop the last genre from the list 
+    cs_str = ', '.join(cs_genre_lst) + f', and {last_entry}'# Output str
     
-    # Comma seperated entries 
-    cs_str = ', '.join(cs_genre_lst) + f', and {last_entry}'
+    return f'I like to watch {cs_str} movies.'  
 
-    print(f'I like to watch {cs_str} movies.')
-
-def title_csl(comp_ds):
+def print_movie_titles(movie_list):
     """Prints comma seperated list of movie titles"""
-    # List to hold all the genre values
-    cs_title_lst = []
-    
-    # Add all the title's to the list
-    for movie in comp_ds['movies']:
-        cs_title_lst.append(movie['title'])
-
+    movie_title_list = [entry['title'] for entry in movie_list]
     # Convert the list to title case
-    cs_title_lst = [mov_name.title() for mov_name in cs_title_lst]
+    movie_list = [mov_name.title() for mov_name in movie_title_list]
 
-    # Pop the last title from the list
-    last_entry = cs_title_lst.pop(-1)
-    
-    # Comma seperated entries 
-    cs_str = ', '.join(cs_title_lst) + f', and {last_entry}'
+    last_entry = movie_title_list.pop(-1)# Pop the last title from the list 
+    output_str = ', '.join(movie_list) + f', and {last_entry}' # Output str
 
-    print(f'Some of my favourite movies are {cs_str}!')
-
-
+    return f'Some of my favourite movies are {output_str}!'
 
 if __name__ == '__main__': 
     main()
     
-
