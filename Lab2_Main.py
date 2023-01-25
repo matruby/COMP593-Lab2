@@ -28,8 +28,8 @@ def print_student_name_and_id(comp_ds):
     student_id = comp_ds['student_id']# Get Student ID from dict
 
     first_name = full_name.split()[0] # Get just the first name
-    name_str = f'My name is {full_name}, but you can call me Sir {first_name}\n' + \
-    f'My student ID is {student_id}\n'
+    name_str = f'My name is {full_name}, but you can call me Sir {first_name}.\n' + \
+    f'My student ID is {student_id}.\n'
 
     return name_str
 
@@ -72,7 +72,7 @@ def print_movie_titles(movie_list):
     # Convert the list to title case
     movie_list = [mov_name.title() for mov_name in movie_title_list]
 
-    last_entry = movie_title_list.pop(-1)# Pop the last title from the list 
+    last_entry = movie_list.pop(-1)# Pop the last title from the list 
     output_str = ', '.join(movie_list) + f', and {last_entry}' # Output str
 
     return f'Some of my favourite movies are {output_str}!'
